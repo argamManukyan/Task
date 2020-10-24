@@ -26,7 +26,7 @@ class TermsCreateView(generics.ListCreateAPIView):
         terms_count = Terms.objects.aggregate(Count('title'))
         posted_terms_count = self.request.POST.getlist('terms')
         if terms_count['title__count'] != len(posted_terms_count):
-            raise ValidationError('Нужно выбрать все поля правилах сайта.')
+            raise ValidationError('Нужно выбрать все поля.')
         terms_creation = serializer.save()
         terms_creation.user = self.request.user
         terms_creation.save()
