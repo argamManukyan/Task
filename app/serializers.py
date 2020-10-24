@@ -9,7 +9,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        exclude = ['terms']
+        exclude = ['terms','qualification','is_qualified']
 
     def get_user(self, obj):
         return obj.user.username
